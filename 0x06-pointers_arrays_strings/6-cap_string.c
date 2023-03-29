@@ -1,24 +1,28 @@
 /**
- * leet - encode a string
- * @s: string to encode
+ * cap_string - Change words to uppercase
+ * @s: string to change to uppercase
  *
  *Return: pointer to the string in uppercase format
  */
 
-char *leet(char *s)
+char *cap_string(char *s)
 {
-	int j = 0, i = 0;
-	char lower[] = "aeotl";
-	char upper[] = "AEOTL";
-	char num[] = "43071";
+	int i = 0;
 
-	for (j = 0; s[j] != '\0'; j++)
+	while (s[i] != '\0')
 	{
-		for (i = 0; i < 5; i++)
+		if (s[i] >= 'a' && s[i] <= 'z' &&
+		   (s[i - 1] == ' ' || s[i - 1] == '\t' ||
+		    s[i - 1] == '\n' || s[i - 1] == ',' ||
+		    s[i - 1] == ';' || s[i - 1] == '.' ||
+		    s[i - 1] == '!' || s[i - 1] == '?' ||
+		    s[i - i] == '"' || s[i - 1] == '(' ||
+		    s[i - 1] == ')' || s[i - 1] == '{' ||
+		    s[i - 1] == '}' || i == 0))
 		{
-			if (lower[i] == s[j] || upper[i] == s[j])
-				s[j] = num[i];
+			s[i] = s[i] - 32;
 		}
+		i++;
 	}
 	return (s);
 }
